@@ -48,9 +48,10 @@ export const authApi = {
   },
 
   register: async (data: RegisterData): Promise<{ user: User; token: string }> => {
+    const { username, email, password, name } = data;
     const response = await request<{ user: User; token: string }>('/auth/register', {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify({ username, email, password, name }),
     });
     localStorage.setItem('token', response.token);
     return response;
