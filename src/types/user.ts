@@ -22,4 +22,9 @@ export interface RegisterData {
   email: string;
   password: string;
   name: string;
+}
+
+export interface UserPreferences {
+  theme: 'light' | 'dark';
+  defaultLocale: Locale;
 } 
