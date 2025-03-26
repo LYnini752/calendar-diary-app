@@ -109,12 +109,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setIsLoading(true);
     setError(null);
     try {
-      const { user } = await authApi.register({
-        username: data.username,
-        email: data.email,
-        password: data.password,
-        name: data.name
-      });
+      const { user } = await authApi.register(data);
       setUser(user);
     } catch (err) {
       setError((err as Error).message);
