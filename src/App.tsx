@@ -1,26 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box, CssBaseline, useTheme } from '@mui/material';
+import { useAuth } from './contexts/AuthContext';
+import AppRoutes from './routes';
+import { useTranslation } from './hooks/useTranslation';
 
-function App() {
+const App: React.FC = () => {
+  const { user } = useAuth();
+  const theme = useTheme();
+  const { t } = useTranslation();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <CssBaseline />
+      <AppRoutes />
+    </Box>
   );
-}
+};
 
 export default App;
