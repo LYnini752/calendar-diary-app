@@ -88,7 +88,7 @@ const Register: React.FC<RegisterProps> = ({ onRegister, onNavigateToLogin, loca
         username,
         email,
         password,
-        name: name || undefined
+        ...(name ? { name } : {})
       });
     } catch (err) {
       setError((err as Error).message);
